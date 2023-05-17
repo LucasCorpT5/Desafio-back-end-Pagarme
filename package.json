@@ -117,6 +117,7 @@
     "yn": "^3.1.1"
   },
   "scripts": {
+    "dev": "ts-node-dev --transpile-only --ignore-watch node_modules src/server.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
