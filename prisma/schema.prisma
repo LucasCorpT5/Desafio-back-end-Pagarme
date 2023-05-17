@@ -10,6 +10,16 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model User {
+  id              String      @id @default(uuid())
+  firstName       String
+  lastName        String
+  email           String      @unique
+  password        String
+  transactions    Transaction[]
+
+}
+
 model Transaction {
   id              String      @id @default(uuid())
   amount          Float
@@ -20,6 +30,8 @@ model Transaction {
   cardExpiration  String
   cardCvv         String
   createdAt       DateTime    @default(now())
+  userId          String
+  user            User        @relation(fields: [userId], references: [id])
   payables        Payable[]
 }
 
