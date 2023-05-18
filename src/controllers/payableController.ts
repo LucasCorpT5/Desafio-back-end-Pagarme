@@ -1,6 +1,7 @@
 import { Transaction } from "@prisma/client";
 import { payableService } from "../services/payableService";
 import { Request, Response } from "express";
+import { balanceService } from "../services/balanceService";
 
 export const payableController = {
     createPayable: async(req: Request, res: Response) => {
@@ -16,8 +17,9 @@ export const payableController = {
                 payablePaymentDate.setDate(payableDate.getDate() + 30);
             }
 
-            const payableCreated = payableService.createPayable(payableDate, payableAmount, payableStatus, transactionId);
-        
+            const payableCreated = await payableService.createPayable(payableDate, payableAmount, payableStatus, transactionId);
+            
+            console.log(payableCreated);
             return res.json(payableCreated);
         } catch(err) {
             if(err instanceof Error) {
@@ -25,8 +27,4 @@ export const payableController = {
             }
         }
     },
-    
-    getCustomerBalance: async(req: Request, res: Response) => {
-
-    }
 }
