@@ -7,7 +7,8 @@ export const transationService = {
             const maskedCardNumber = `**** **** **** ${transaction.cardNumber.slice(-4)}`;
             return {
                 ...transaction,
-                cardNumber: maskedCardNumber
+                cardNumber: maskedCardNumber,
+                createdAt: transaction.createdAt.toISOString(), // Converter a data para string no formato ISO 8601
             }
         });
 

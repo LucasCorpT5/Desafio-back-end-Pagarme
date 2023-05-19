@@ -19,7 +19,6 @@ export const payableController = {
 
             const payableCreated = await payableService.createPayable(payableDate, payableAmount, payableStatus, transactionId);
             
-            console.log(payableCreated);
             return res.json(payableCreated);
         } catch(err) {
             if(err instanceof Error) {

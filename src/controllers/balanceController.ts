@@ -8,7 +8,9 @@ export const balanceController = {
         const userId = req.body.userId;
 
         const customerBalance = await balanceService.getCustomerBalance(userId);
+        const balance = customerBalance.available
+        const waiting_funds = customerBalance.waitingFunds;
 
-        return res.json(customerBalance.available) && res.json(customerBalance.waitingFunds);
+        return res.json({balance, waiting_funds});
     }
 }
