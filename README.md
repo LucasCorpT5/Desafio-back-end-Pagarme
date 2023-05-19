@@ -2,3 +2,4 @@
     * nodejs
     * prisma
     * express
+    * jest
